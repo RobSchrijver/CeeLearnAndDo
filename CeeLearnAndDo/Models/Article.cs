@@ -16,8 +16,8 @@ namespace CeeLearnAndDo.Models
         public string ArticleVideo { get; set; }
         public string ArticleText { get; set; }
       
-        public ApplicationUser AppUser { get; set; }
-        public int AppUserId { get; set; }
+        //public ApplicationUser AppUser { get; set; }
+        //public int AppUserId { get; set; }
 
     }
 
