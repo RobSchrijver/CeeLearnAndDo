@@ -5,16 +5,15 @@ using System.Web;
 
 namespace CeeLearnAndDo.Models
 {
-    public class Reaction
+    public class Image
     {
         public int Id { get; set; }
-        public string ReactionTitle { get; set; }
-        public string ReactionDescription { get; set; }
+        public string ImageLink { get; set; }
 
         public Article Article { get; set; }
         public int ArticleId { get; set; }
 
-        public ApplicationUser AppUser { get; set; }
-        public int AppUserId { get; set; } 
+        public Reference Reference { get; set; }
+        public int ReferenceId { get; set; }
     }
 }

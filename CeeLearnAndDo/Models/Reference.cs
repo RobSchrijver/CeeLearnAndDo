@@ -5,12 +5,11 @@ using System.Web;
 
 namespace CeeLearnAndDo.Models
 {
-    public class Question
+    public class Reference
     {
         public int Id { get; set; }
-        public string QuestionTitle { get; set; }
-        public string QuestionDescription { get; set; }
-        public string CustomerEmail { get; set; }
+        public string Info { get; set; }
+        public string Image { get; set; }
 
         public ApplicationUser AppUser { get; set; }
         public int AppUserId { get; set; }

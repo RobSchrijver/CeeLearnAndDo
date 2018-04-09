@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CeeLearnAndDo.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,7 +23,15 @@ namespace CeeLearnAndDo.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(Contact contact)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            db.Contacts.Add(contact);
+            db.SaveChanges();
 
             return View();
         }

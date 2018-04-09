@@ -1,17 +1,32 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model CeeLearnAndDo.Models.Contact
+
+@{
+    ViewBag.Title = "Contact/Vragen pagina";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<h2>@ViewBag.Title</h2>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@using (Html.BeginForm())
+{
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    @Html.EnumDropDownListFor(Model => Model.Type, new { @class = "form-control" });
+    @Html.TextBoxFor(Model => Model.Name, new { @class = "form-control", @placeholder = "Naam" })
+    @Html.TextBoxFor(Model => Model.Email, new { @class = "form-control", @placeholder = "Email" })
+    @Html.TextBoxFor(Model => Model.Title, new { @class = "form-control", @placeholder = "Onderwerp" })
+    @Html.TextAreaFor(Model => Model.Description, new { @class = "form-control", @placeholder = "Vul hier uw text in!", @rows="5", @cols="50" })
+
+    <input type="submit" value="Versturen" class="btn btn-default" />
+}
+
+
+
+@*<address>
+        One Microsoft Way<br />
+        Redmond, WA 98052-6399<br />
+        <abbr title="Phone">P:</abbr>
+        425.555.0100
+    </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>*@
