@@ -13,5 +13,8 @@ namespace CeeLearnAndDo.Models
 
         public Question Question { get; set; }
         public int QuestionId { get; set; }
+
+        public ApplicationUser AppUser { get; set; }
+        public int AppUserId { get; set; }
     }
 }

@@ -34,5 +34,9 @@ namespace CeeLearnAndDo.Models
         public DbSet<Article> Articles { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Reference> References { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
