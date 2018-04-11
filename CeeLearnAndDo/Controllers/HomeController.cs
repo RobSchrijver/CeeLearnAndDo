@@ -35,5 +35,10 @@ namespace CeeLearnAndDo.Controllers
 
             return View();
         }
+
+        public ActionResult Articles()
+        {
+            return View();
+        }
     }
 }

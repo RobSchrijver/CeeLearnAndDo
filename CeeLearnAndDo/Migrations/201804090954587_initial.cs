@@ -104,24 +104,22 @@ namespace CeeLearnAndDo.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         ArticleDescription = c.String(),
                         ArticleName = c.String(),
-                        ArticleImage = c.String(),
-                        AppUserId = c.Int(nullable: false),
-                        AppUser_Id = c.String(maxLength: 128),
+                        ArticlePhoto = c.String(),
+                        ArticleVideo = c.String(),
+                        ArticleText = c.String(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.AppUser_Id)
-                .Index(t => t.AppUser_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Contacts",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Email = c.String(),
+                        Email = c.String(nullable: false),
                         Name = c.String(),
                         Title = c.String(),
                         Description = c.String(),
-                        Type = c.Boolean(nullable: false),
+                        Type = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -204,7 +202,6 @@ namespace CeeLearnAndDo.Migrations
             DropForeignKey("dbo.Images", "ReferenceId", "dbo.References");
             DropForeignKey("dbo.References", "AppUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Images", "ArticleId", "dbo.Articles");
-            DropForeignKey("dbo.Articles", "AppUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Answers", "QuestionId", "dbo.Questions");
             DropForeignKey("dbo.Questions", "AppUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Answers", "AppUser_Id", "dbo.AspNetUsers");
@@ -218,7 +215,6 @@ namespace CeeLearnAndDo.Migrations
             DropIndex("dbo.References", new[] { "AppUser_Id" });
             DropIndex("dbo.Images", new[] { "ReferenceId" });
             DropIndex("dbo.Images", new[] { "ArticleId" });
-            DropIndex("dbo.Articles", new[] { "AppUser_Id" });
             DropIndex("dbo.Questions", new[] { "AppUser_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
