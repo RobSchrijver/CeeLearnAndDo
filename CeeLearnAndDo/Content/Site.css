@@ -2,6 +2,13 @@
     padding-top: 50px;
     padding-bottom: 20px;
 }
+body, .jumbotron {
+    background-color: lightblue !important;
+}
+
+hr {
+    border-top: 1px solid black !important;
+}
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
