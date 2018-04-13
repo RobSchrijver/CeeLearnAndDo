@@ -14,18 +14,17 @@ namespace CeeLearnAndDo.Controllers
     {
         private CeeLearnAndDoContext db = new CeeLearnAndDoContext();
 
-        public ActionResult Index(string id)
+        public ActionResult Index(string searchString)
         {
-            string searchString = id;
-            var Articles = from a in db.Articles
-                         select a;
+            var articles = from m in db.Articles
+                         select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                Articles = Articles.Where(s => s.ArticleName.Contains(searchString));
+                articles = articles.Where(s => s.ArticleName.Contains(searchString));
             }
 
-            return View(Articles);
+            return View(articles);
         }
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
