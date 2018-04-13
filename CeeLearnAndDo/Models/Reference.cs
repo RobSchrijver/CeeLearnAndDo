@@ -16,9 +16,4 @@ namespace CeeLearnAndDo.Models
         //public ApplicationUser AppUser { get; set; }
         //public int AppUserId { get; set; }
     }
-
-    public class ReferenceDBContext : DbContext
-    {
-        public DbSet<Reference> References { get; set; }
-    }
 }
