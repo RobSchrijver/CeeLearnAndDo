@@ -12,12 +12,13 @@ namespace CeeLearnAndDo.Controllers
 {
     public class ArticlesController : Controller
     {
-        private CeeLearnAndDoContext db = new CeeLearnAndDoContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
+        // GET: Articles
         public ActionResult Index(string searchString)
         {
             var articles = from m in db.Articles
-                         select m;
+                           select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -26,6 +27,7 @@ namespace CeeLearnAndDo.Controllers
 
             return View(articles);
         }
+
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {
