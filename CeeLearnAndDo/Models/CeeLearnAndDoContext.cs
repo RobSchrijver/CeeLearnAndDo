@@ -20,5 +20,6 @@ namespace CeeLearnAndDo.Models
         }
 
         public System.Data.Entity.DbSet<CeeLearnAndDo.Models.Article> Articles { get; set; }
+
     }
 }

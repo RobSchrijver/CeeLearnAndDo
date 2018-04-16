@@ -36,7 +36,8 @@ namespace CeeLearnAndDo.Models
         public DbSet<Reaction> Reactions { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Video> Videos { get; set; }
-        public DbSet<Reference> References { get; set; }
-        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Reference> References { get; set; }    
+        public DbSet<ContactAdmin> ContactAdmins { get; set; }
+
     }
 }

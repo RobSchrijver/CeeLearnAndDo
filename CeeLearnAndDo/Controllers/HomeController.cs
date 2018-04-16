@@ -27,10 +27,27 @@ namespace CeeLearnAndDo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Contact(Contact contact)
+        public ActionResult Contact(ContactAdmin contact)
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            db.Contacts.Add(contact);
+ 
+            db.ContactAdmins.Add(contact);
+            db.SaveChanges();
+
+            return View();
+        }
+
+        public ActionResult Answer()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Answer(Answer answer)
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+
+            db.Answers.Add(answer);
             db.SaveChanges();
 
             return View();

@@ -192,29 +192,24 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\ContactAdminsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804061200045_initial.cs" />
-    <Compile Include="Migrations\201804061200045_initial.Designer.cs">
-      <DependentUpon>201804061200045_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804061210246_initial1.cs" />
-    <Compile Include="Migrations\201804061210246_initial1.Designer.cs">
-      <DependentUpon>201804061210246_initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804090929596_contacts.cs" />
-    <Compile Include="Migrations\201804090929596_contacts.Designer.cs">
-      <DependentUpon>201804090929596_contacts.cs</DependentUpon>
+    <Compile Include="Migrations\201804161136285_initial.cs" />
+    <Compile Include="Migrations\201804161136285_initial.Designer.cs">
+      <DependentUpon>201804161136285_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Answer.cs" />
+    <Compile Include="Models\AnswerViewModel.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\CeeLearnAndDoContext.cs" />
+    <Compile Include="Models\ContactAdmin.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -289,6 +284,12 @@
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\ContactAdmins\Create.cshtml" />
+    <Content Include="Views\ContactAdmins\Delete.cshtml" />
+    <Content Include="Views\ContactAdmins\Details.cshtml" />
+    <Content Include="Views\ContactAdmins\Edit.cshtml" />
+    <Content Include="Views\ContactAdmins\Index.cshtml" />
+    <Content Include="Views\ContactAdmins\Answer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -307,14 +308,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804061200045_initial.resx">
-      <DependentUpon>201804061200045_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804061210246_initial1.resx">
-      <DependentUpon>201804061210246_initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804090929596_contacts.resx">
-      <DependentUpon>201804090929596_contacts.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804161136285_initial.resx">
+      <DependentUpon>201804161136285_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
