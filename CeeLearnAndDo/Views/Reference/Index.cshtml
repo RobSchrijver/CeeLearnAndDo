@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CeeLearnAndDo.Models.Reference>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@foreach (var item in Model) {
+        <h2 style="font-weight: bold;">
+            @Html.DisplayFor(modelItem => item.ReferenceTitle)
+        </h2>
+        <p>
+            @Html.DisplayFor(modelItem => item.ReferenceInfo)
+        </p>
+        <p>
+            @Html.DisplayFor(modelItem => item.ReferenceImage)
+        </p>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+        </p>
+        <p> 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </p>
+}
+

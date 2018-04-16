@@ -10,115 +10,107 @@ using CeeLearnAndDo.Models;
 
 namespace CeeLearnAndDo.Controllers
 {
-    public class ArticlesController : Controller
+    public class ReferenceController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Articles
-        public ActionResult Index(string searchString)
+        // GET: Reference
+        public ActionResult Index()
         {
-            var articles = from m in db.Articles
-                           select m;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                articles = articles.Where(s => s.ArticleName.Contains(searchString));
-            }
-
-            return View(articles);
+            return View(db.References.ToList());
         }
 
-        // GET: Articles/Details/5
+        // GET: Reference/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            Reference reference = db.References.Find(id);
+            if (reference == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(reference);
         }
 
-        // GET: Articles/Create
+        // GET: Reference/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Articles/Create
+        // POST: Reference/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText")] Article article)
+        public ActionResult Create([Bind(Include = "Id,ReferenceTitle,ReferenceInfo,ReferenceImage")] Reference reference)
         {
             if (ModelState.IsValid)
             {
-                db.Articles.Add(article);
+                db.References.Add(reference);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(article);
+            return View(reference);
         }
 
-        // GET: Articles/Edit/5
+        // GET: Reference/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            Reference reference = db.References.Find(id);
+            if (reference == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(reference);
         }
 
-        // POST: Articles/Edit/5
+        // POST: Reference/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText")] Article article)
+        public ActionResult Edit([Bind(Include = "Id,ReferenceTitle,ReferenceInfo,ReferenceImage")] Reference reference)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(article).State = EntityState.Modified;
+                db.Entry(reference).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(article);
+            return View(reference);
         }
 
-        // GET: Articles/Delete/5
+        // GET: Reference/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            Reference reference = db.References.Find(id);
+            if (reference == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(reference);
         }
 
-        // POST: Articles/Delete/5
+        // POST: Reference/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Article article = db.Articles.Find(id);
-            db.Articles.Remove(article);
+            Reference reference = db.References.Find(id);
+            db.References.Remove(reference);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
