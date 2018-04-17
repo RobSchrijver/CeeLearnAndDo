@@ -50,8 +50,18 @@
             @Html.DisplayFor(model => model.ArticleText)
         </dd>
         <dd>
-            @Html.EnumDropDownListFor(model => model.ArticleAccepted, new { @class = "form-control" });
-            <input type="submit" value="Bevestigen" class="btn btn-default" />
+            @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(model => model.ArticleDescription)
+        @Html.HiddenFor(model => model.ArticleName)
+        @Html.HiddenFor(model => model.ArticlePhoto)
+        @Html.HiddenFor(model => model.ArticleText)
+        @Html.HiddenFor(model => model.ArticleVideo)
+        @Html.CheckBoxFor(model => model.ArticleAccepted, new { @class = "form-control" });
+        <input type="submit" value="Bevestigen" class="btn btn-default" />
+}
         </dd>
        
     </dl>

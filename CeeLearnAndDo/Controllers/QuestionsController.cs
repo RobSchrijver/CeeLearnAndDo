@@ -10,131 +10,110 @@ using CeeLearnAndDo.Models;
 
 namespace CeeLearnAndDo.Controllers
 {
-    public class ArticlesController : Controller
+    public class QuestionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Articles
-        public ActionResult Index(string searchString)
+        // GET: Questions
+        public ActionResult Index()
         {
-            var articles = from m in db.Articles
-                           select m;
+            //return View(db.ContactAdmins.ToList());
+            
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                articles = articles.Where(s => s.ArticleName.Contains(searchString));
-            }
-
-            return View(articles);
+            return View();
         }
 
-        // GET: Articles/Details
+        // GET: Questions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
+            if (contactAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(contactAdmin);
         }
 
-        // POST: Articles/Details
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Details([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText,ArticleAccepted")] Article article)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(article).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(article);
-        }
-
-        // GET: Articles/Create
+        // GET: Questions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Articles/Create
+        // POST: Questions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText")] Article article)
+        public ActionResult Create([Bind(Include = "Id,Email,Name,Title,Description,Type")] ContactAdmin contactAdmin)
         {
             if (ModelState.IsValid)
             {
-                db.Articles.Add(article);
+                db.ContactAdmins.Add(contactAdmin);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(article);
+            return View(contactAdmin);
         }
 
-        // GET: Articles/Edit/5
+        // GET: Questions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
+            if (contactAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(contactAdmin);
         }
 
-        // POST: Articles/Edit/5
+        // POST: Questions/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText")] Article article)
+        public ActionResult Edit([Bind(Include = "Id,Email,Name,Title,Description,Type")] ContactAdmin contactAdmin)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(article).State = EntityState.Modified;
+                db.Entry(contactAdmin).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(article);
+            return View(contactAdmin);
         }
 
-        // GET: Articles/Delete/5
+        // GET: Questions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Article article = db.Articles.Find(id);
-            if (article == null)
+            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
+            if (contactAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(article);
+            return View(contactAdmin);
         }
 
-        // POST: Articles/Delete/5
+        // POST: Questions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Article article = db.Articles.Find(id);
-            db.Articles.Remove(article);
+            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
+            db.ContactAdmins.Remove(contactAdmin);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
