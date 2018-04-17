@@ -4,24 +4,25 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Referenties</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
 
-@foreach (var item in Model) {
-        <h2 style="font-weight: bold;">
-            @Html.DisplayFor(modelItem => item.ReferenceTitle)
-        </h2>
-        <p>
-            @Html.DisplayFor(modelItem => item.ReferenceInfo)
-        </p>
-        <p>
-            @Html.DisplayFor(modelItem => item.ReferenceImage)
-        </p>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
-        </p>
-        <p> 
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </p>
+@foreach (var item in Model)
+{
+<p>
+    @Html.DisplayFor(modelItem => item.ReferenceTitle)
+</p>
+<p>
+    @Html.DisplayFor(modelItem => item.ReferenceInfo)
+</p>
+<p>
+    @Html.DisplayFor(modelItem => item.ReferenceImage)
+</p>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+</p>
 }
-

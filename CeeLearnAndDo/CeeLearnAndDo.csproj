@@ -194,12 +194,13 @@
     <Compile Include="Controllers\ContactAdminsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReferenceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201804161227291_initial.cs" />
-    <Compile Include="Migrations\201804161227291_initial.Designer.cs">
-      <DependentUpon>201804161227291_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201804171201172_initial.cs" />
+    <Compile Include="Migrations\201804171201172_initial.Designer.cs">
+      <DependentUpon>201804171201172_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -288,6 +289,9 @@
     <Content Include="Views\ContactAdmins\Edit.cshtml" />
     <Content Include="Views\ContactAdmins\Index.cshtml" />
     <Content Include="Views\ContactAdmins\Answer.cshtml" />
+    <Content Include="Views\Reference\Create.cshtml" />
+    <Content Include="Views\Reference\Edit.cshtml" />
+    <Content Include="Views\Reference\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,8 +310,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804161227291_initial.resx">
-      <DependentUpon>201804161227291_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201804171201172_initial.resx">
+      <DependentUpon>201804171201172_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
