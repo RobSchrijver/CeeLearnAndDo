@@ -12,7 +12,7 @@ namespace CeeLearnAndDo.Models
         public string QuestionDescription { get; set; }
         public string CustomerEmail { get; set; }
 
-        public ApplicationUser AppUser { get; set; }
-        public int AppUserId { get; set; }
+        //public ApplicationUser AppUser { get; set; }
+        //public int AppUserId { get; set; }
     }
 }
