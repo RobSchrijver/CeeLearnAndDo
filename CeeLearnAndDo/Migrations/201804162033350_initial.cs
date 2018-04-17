@@ -28,6 +28,7 @@ namespace CeeLearnAndDo.Migrations
                         ArticlePhoto = c.String(),
                         ArticleVideo = c.String(),
                         ArticleText = c.String(),
+                        ArticleAccepted = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -64,8 +65,20 @@ namespace CeeLearnAndDo.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Info = c.String(),
-                        Image = c.String(),
+                        ReferenceTitle = c.String(),
+                        ReferenceInfo = c.String(),
+                        ReferenceImage = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Questions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        QuestionTitle = c.String(),
+                        QuestionDescription = c.String(),
+                        CustomerEmail = c.String(),
                         AppUserId = c.Int(nullable: false),
                         AppUser_Id = c.String(maxLength: 128),
                     })
@@ -132,21 +145,6 @@ namespace CeeLearnAndDo.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Questions",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        QuestionTitle = c.String(),
-                        QuestionDescription = c.String(),
-                        CustomerEmail = c.String(),
-                        AppUserId = c.Int(nullable: false),
-                        AppUser_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.AppUser_Id)
-                .Index(t => t.AppUser_Id);
-            
-            CreateTable(
                 "dbo.Reactions",
                 c => new
                     {
@@ -194,33 +192,31 @@ namespace CeeLearnAndDo.Migrations
             DropForeignKey("dbo.Reactions", "ArticleId", "dbo.Articles");
             DropForeignKey("dbo.Reactions", "AppUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Questions", "AppUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Images", "ReferenceId", "dbo.References");
-            DropForeignKey("dbo.References", "AppUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Images", "ReferenceId", "dbo.References");
             DropForeignKey("dbo.Images", "ArticleId", "dbo.Articles");
             DropIndex("dbo.Videos", new[] { "ReferenceId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Reactions", new[] { "AppUser_Id" });
             DropIndex("dbo.Reactions", new[] { "ArticleId" });
-            DropIndex("dbo.Questions", new[] { "AppUser_Id" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.References", new[] { "AppUser_Id" });
+            DropIndex("dbo.Questions", new[] { "AppUser_Id" });
             DropIndex("dbo.Images", new[] { "ReferenceId" });
             DropIndex("dbo.Images", new[] { "ArticleId" });
             DropTable("dbo.Videos");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Reactions");
-            DropTable("dbo.Questions");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Questions");
             DropTable("dbo.References");
             DropTable("dbo.Images");
             DropTable("dbo.ContactAdmins");
