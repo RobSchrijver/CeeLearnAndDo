@@ -28,6 +28,7 @@ namespace CeeLearnAndDo.Migrations
                         ArticlePhoto = c.String(),
                         ArticleVideo = c.String(),
                         ArticleText = c.String(),
+                        ArticleAccepted = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             

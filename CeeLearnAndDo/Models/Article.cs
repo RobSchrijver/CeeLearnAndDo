@@ -7,6 +7,8 @@ using System.Web.Mvc;
 
 namespace CeeLearnAndDo.Models
 {
+    public enum ArticleAccepted { Accepteren, NietAccepteren }
+
     public class Article
     {
         public int Id { get; set; }
@@ -14,8 +16,10 @@ namespace CeeLearnAndDo.Models
         public string ArticleName { get; set; }
         public string ArticlePhoto { get; set; }
         public string ArticleVideo { get; set; }
+        [AllowHtml]
         public string ArticleText { get; set; }
-      
+        public ArticleAccepted ArticleAccepted { get; set; }
+        
         //public ApplicationUser AppUser { get; set; }
         //public int AppUserId { get; set; }
 
