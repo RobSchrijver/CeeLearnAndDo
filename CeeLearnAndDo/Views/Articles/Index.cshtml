@@ -7,10 +7,13 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @if (User.IsInRole("Consultant") || User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
     @using (Html.BeginForm())
     {
-    <p>
+<p>
         Artikelnaam: @Html.TextBox("SearchString")
         <input type="submit" value="Zoeken" />
     </p>
@@ -18,23 +21,23 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ArticleDescription)
+                @Html.DisplayNameFor(model => model.ArticlePhoto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ArticleName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArticlePhoto)
+                @Html.DisplayNameFor(model => model.ArticleDescription)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArticleVideo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArticleText)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ArticleAccepted)
-            </th>
+
+
+
+            @if (User.IsInRole("Consultant") || User.IsInRole("Admin"))
+    {
+        <th>
+            @Html.DisplayNameFor(model => model.ArticleAccepted)
+        </th>
+}
             <th></th>
         </tr>
 
@@ -42,28 +45,32 @@
         {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ArticleDescription)
+                @Html.DisplayFor(modelItem => item.ArticlePhoto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ArticleName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ArticlePhoto)
+                @Html.DisplayFor(modelItem => item.ArticleDescription)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArticleVideo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArticleText)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ArticleAccepted)
-            </td>
+
+            @if (User.IsInRole("Consultant") || User.IsInRole("Admin"))
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.ArticleAccepted)
+        </td>
+}
+
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @if (User.IsInRole("Admin"))
+        {
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+}
             </td>
+
         </tr>
         }
 
