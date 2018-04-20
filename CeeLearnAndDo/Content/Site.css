@@ -8,14 +8,20 @@
     height: 100vh;
 }
 
+a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
 .navbar-inverse {
     background-color: rgba(0,0,0,0.5) !important;
     border: none !important;
 }
 
-.navbar-inverse .navbar-nav > li > a  {
-    color: rgb(200,200,200) !important;
-}
+    .navbar-inverse .navbar-nav > li > a {
+        color: rgb(200,200,200) !important;
+        text-decoration: none !important;
+    }
 
 .navbar-inverse .navbar-nav > li:hover a {
     color: white !important;

@@ -13,7 +13,7 @@ namespace CeeLearnAndDo.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201804171126462_initial"; }
+            get { return "201804200847164_initial"; }
         }
         
         string IMigrationMetadata.Source
