@@ -28,7 +28,7 @@ namespace CeeLearnAndDo.Migrations
                         ArticlePhoto = c.String(),
                         ArticleVideo = c.String(),
                         ArticleText = c.String(),
-                        ArticleAccepted = c.Int(nullable: false),
+                        ArticleAccepted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -79,11 +79,24 @@ namespace CeeLearnAndDo.Migrations
                         QuestionTitle = c.String(),
                         QuestionDescription = c.String(),
                         CustomerEmail = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Reactions",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        ReactionTitle = c.String(),
+                        ReactionDescription = c.String(),
+                        ArticleId = c.Int(nullable: false),
                         AppUserId = c.Int(nullable: false),
                         AppUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.AppUser_Id)
+                .ForeignKey("dbo.Articles", t => t.ArticleId, cascadeDelete: true)
+                .Index(t => t.ArticleId)
                 .Index(t => t.AppUser_Id);
             
             CreateTable(
@@ -91,6 +104,7 @@ namespace CeeLearnAndDo.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        UserRole = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -145,23 +159,6 @@ namespace CeeLearnAndDo.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.Reactions",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ReactionTitle = c.String(),
-                        ReactionDescription = c.String(),
-                        ArticleId = c.Int(nullable: false),
-                        AppUserId = c.Int(nullable: false),
-                        AppUser_Id = c.String(maxLength: 128),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.AppUser_Id)
-                .ForeignKey("dbo.Articles", t => t.ArticleId, cascadeDelete: true)
-                .Index(t => t.ArticleId)
-                .Index(t => t.AppUser_Id);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -191,7 +188,6 @@ namespace CeeLearnAndDo.Migrations
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Reactions", "ArticleId", "dbo.Articles");
             DropForeignKey("dbo.Reactions", "AppUser_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Questions", "AppUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -199,23 +195,22 @@ namespace CeeLearnAndDo.Migrations
             DropForeignKey("dbo.Images", "ArticleId", "dbo.Articles");
             DropIndex("dbo.Videos", new[] { "ReferenceId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.Reactions", new[] { "AppUser_Id" });
-            DropIndex("dbo.Reactions", new[] { "ArticleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Questions", new[] { "AppUser_Id" });
+            DropIndex("dbo.Reactions", new[] { "AppUser_Id" });
+            DropIndex("dbo.Reactions", new[] { "ArticleId" });
             DropIndex("dbo.Images", new[] { "ReferenceId" });
             DropIndex("dbo.Images", new[] { "ArticleId" });
             DropTable("dbo.Videos");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Reactions");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.Reactions");
             DropTable("dbo.Questions");
             DropTable("dbo.References");
             DropTable("dbo.Images");

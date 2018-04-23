@@ -16,15 +16,21 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <img src="/siteImages/Naamloos-1.png" alt=" " style="margin-top: 5px; width:55px;" />
+                <a href="@Url.Action("Index", "Home")" title="Home" >
+                       <img src="@Url.Content("/siteImages/Naamloos-1.png")" style="margin-top: 5px; max-width:55px;"/>
+                </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Over ons", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Articles", "Index", "Articles")</li>
-                    <li>@Html.ActionLink("Reference", "Index", "Reference")</li>
+                    <li>@Html.ActionLink("Artikelen", "Index", "Articles")</li>
+                    <li>@Html.ActionLink("Referentie", "Index", "Reference")</li>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Consultant"))
+                    {
+                    <li>@Html.ActionLink("Beantwoorden", "Index", "ContactAdmins")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

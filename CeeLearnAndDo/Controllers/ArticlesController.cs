@@ -17,15 +17,33 @@ namespace CeeLearnAndDo.Controllers
         // GET: Articles
         public ActionResult Index(string searchString)
         {
-            var articles = from m in db.Articles
-                           select m;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (User.IsInRole("Admin")||User.IsInRole("Consultant"))
             {
-                articles = articles.Where(s => s.ArticleName.Contains(searchString));
+                var articles = from m in db.Articles
+                               select m;
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    articles = articles.Where(s => s.ArticleName.Contains(searchString));
+                }
+                return View(articles);
             }
 
-            return View(articles);
+            else{
+                var articles = from m in db.Articles
+                               select m;
+                
+                articles = articles.Where(s => s.ArticleAccepted.Equals(true));
+
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    articles = articles.Where(s => s.ArticleName.Contains(searchString));
+                }
+                return View(articles);
+            }
+
+            
         }
 
         // GET: Articles/Details

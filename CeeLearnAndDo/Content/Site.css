@@ -1,11 +1,21 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background: linear-gradient(rgb(50,225,175), rgb(50,100,225)) !important;
+    background-image: url("/siteImages/sky.jpg") !important;
     background-size: cover;
     background-repeat: no-repeat;
     box-sizing: border-box;
     height: 100vh;
+}
+
+.checkbutton {
+    width: 15px !important;
+    height: 15px !important;
+}
+
+a {
+    color: #000000 !important;
+    text-decoration: underline !important;
 }
 
 .navbar-inverse {
@@ -13,9 +23,10 @@
     border: none !important;
 }
 
-.navbar-inverse .navbar-nav > li > a  {
-    color: rgb(200,200,200) !important;
-}
+    .navbar-inverse .navbar-nav > li > a {
+        color: rgb(200,200,200) !important;
+        text-decoration: none !important;
+    }
 
 .navbar-inverse .navbar-nav > li:hover a {
     color: white !important;
