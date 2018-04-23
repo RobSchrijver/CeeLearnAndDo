@@ -17,25 +17,33 @@ namespace CeeLearnAndDo.Controllers
         // GET: Questions
         public ActionResult Index()
         {
-            //return View(db.ContactAdmins.ToList());
-            
 
-            return View();
+            var articles = from m in db.ContactAdmins
+                           select m;
+
+
+            articles = articles.Where(s => s.Type.Equals(0));
+            //return View(db.ContactAdmins.ToList());
+            return View(articles);
         }
 
-        // GET: Questions/Details/5
-        public ActionResult Details(int? id)
+        // GET: Questions/Solution/5
+        public ActionResult Solution(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
-            if (contactAdmin == null)
+            AnswerViewModel answerViewModel = new AnswerViewModel() {
+               contactadmin = db.ContactAdmins.Find(id),
+               answer = db.Answers.Where(a => a.QuestionId == id).FirstOrDefault(),
+
+            };
+            if (answerViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(contactAdmin);
+            return View(answerViewModel);
         }
 
         // GET: Questions/Create
