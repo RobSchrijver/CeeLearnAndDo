@@ -23,27 +23,38 @@ namespace CeeLearnAndDo.Controllers
 
 
             articles = articles.Where(s => s.Type.Equals(0));
-            //return View(db.ContactAdmins.ToList());
+            articles = articles.Where(s => s.SiteDisplay.Equals(true));
             return View(articles);
         }
 
         // GET: Questions/Solution/5
         public ActionResult Solution(int? id)
         {
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //AnswerViewModel answerViewModel = new AnswerViewModel() {
+            //   contactadmin = db.ContactAdmins.Find(id),
+            //   answer = db.Answers.Where(a => a.QuestionId == id).FirstOrDefault(),
+
+            //};
+            //if (ContactAdmin == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(ContactAdmin);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnswerViewModel answerViewModel = new AnswerViewModel() {
-               contactadmin = db.ContactAdmins.Find(id),
-               answer = db.Answers.Where(a => a.QuestionId == id).FirstOrDefault(),
-
-            };
-            if (answerViewModel == null)
+            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
+            if (contactAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(answerViewModel);
+            return View(contactAdmin);
         }
 
         // GET: Questions/Create

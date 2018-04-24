@@ -96,16 +96,12 @@ namespace CeeLearnAndDo.Controllers
             {
                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnswerViewModel model = new AnswerViewModel()
-            {
-                contactadmin = db.ContactAdmins.Find(id)
-            };
-            
-            if (model.contactadmin == null)
+            ContactAdmin contactAdmin = db.ContactAdmins.Find(id);
+            if (contactAdmin == null)
             {
                 return HttpNotFound();
             }
-            return View(model);
+            return View(contactAdmin);
         }
 
         // POST: ContactAdmins/Answer/5
@@ -113,17 +109,15 @@ namespace CeeLearnAndDo.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Answer([Bind(Include = "Id,QuestionId,AnswerDescription,SiteDisplay")] Answer answer)
+        public ActionResult Answer([Bind(Include = "Id,Email,Name,Title,Description,Type,AnswerDescription,SiteDisplay")] ContactAdmin contactAdmin)
         {
-            var test = answer;
             if (ModelState.IsValid)
             {
-                db.Answers.Add(answer);
+                db.Entry(contactAdmin).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            return View(answer);
+            return View(contactAdmin);
         }
     
 

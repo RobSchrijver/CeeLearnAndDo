@@ -14,6 +14,10 @@ namespace CeeLearnAndDo.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public int Type { get; set; }
+
+        //answer
+        public string AnswerDescription { get; set; }
+        public bool SiteDisplay { get; set; }
     }
     public class ContactAdminDBContext : DbContext
     {
