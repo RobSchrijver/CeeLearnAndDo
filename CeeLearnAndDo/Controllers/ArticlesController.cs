@@ -88,7 +88,7 @@ namespace CeeLearnAndDo.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText")] Article article)
+        public ActionResult Create([Bind(Include = "Id,ArticleDescription,ArticleName,ArticlePhoto,ArticleVideo,ArticleText,ArticleDate")] Article article)
         {
             if (ModelState.IsValid)
             {
