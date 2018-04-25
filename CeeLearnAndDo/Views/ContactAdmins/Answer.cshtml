@@ -24,9 +24,10 @@
 
         <div class="form-group">
             <h4 class="control-label col-md-2">Antwoord</h4>
-            @Html.EditorFor(Model => Model.AnswerDescription, new { @class = "form-control", @placeholder = "Wat heeft u hier op te zeggen?!" })
+            @Html.EditorFor(Model => Model.AnswerDescription, new { @placeholder = "Wat heeft u hier op te zeggen?!" })
+            <br /><br />
             <h4 class="control-label col-md-2">Weergeven op de website</h4>
-            @Html.EditorFor(Model => Model.SiteDisplay, new { @class = "form-control" })
+            @Html.EditorFor(Model => Model.SiteDisplay)
 
             @*hidden values*@
             @Html.HiddenFor(model => model.Email)
