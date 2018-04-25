@@ -7,10 +7,8 @@
 <h2>Artikelen</h2>
 
 <p>
-    @if (User.IsInRole("Consultant") || User.IsInRole("Admin"))
-    {
         @Html.ActionLink("Create New", "Create")
-    }
+   
     @using (Html.BeginForm())
     {
 <p>

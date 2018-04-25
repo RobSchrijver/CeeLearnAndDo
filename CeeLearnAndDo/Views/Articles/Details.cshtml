@@ -47,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ArticleText)
+            @Html.DisplayFor(model => model.ArticleText, new { @class = "text" })
         </dd>
         @if (User.IsInRole("Admin"))
         {
