@@ -9,10 +9,10 @@
 <p>
     @if (User.IsInRole("Consultant") || User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Maak een artikel aan", "Create")
     }
-    @using (Html.BeginForm())
-    {
+        @using (Html.BeginForm())
+        {
 <p>
         Artikelnaam: @Html.TextBox("SearchString")
         <input type="submit" value="Zoeken" />
@@ -21,13 +21,13 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ArticlePhoto)
+                <p class="b">Artikelfoto</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArticleName)
+                <p class="b">Titel</p>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ArticleDescription)
+                <p class="b">Omschrijving</p>
             </th>
             <th>
                 <p>Datum</p>
@@ -37,9 +37,9 @@
 
             @if (User.IsInRole("Consultant") || User.IsInRole("Admin"))
     {
-        <th>
-            @Html.DisplayNameFor(model => model.ArticleAccepted)
-        </th>
+            <th>
+                <p class="b">Geaccepteerd</p>
+            </th>
 }
             <th></th>
         </tr>
@@ -68,7 +68,7 @@
 }
 
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Aanpassen", "Edit", new { id = item.Id }) |
                 @Html.ActionLink("Details", "Details", new { id = item.Id })
                 @if (User.IsInRole("Admin"))
         {

@@ -10,40 +10,33 @@
     <h4>Article</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleDescription)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ArticleDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ArticleName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticlePhoto)
+        <dt class="b">
+            Foto
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ArticlePhoto)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleVideo)
+        <dt class="b">
+            Naam
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ArticleVideo)
+            @Html.DisplayFor(model => model.ArticleName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleText)
+        <dt class="b">
+            Omschrijving
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArticleDescription)
+        </dd>
+
+        <dt class="b">
+            Tekst
         </dt>
 
         <dd>
@@ -52,14 +45,13 @@
             @Html.ValidationMessageFor(model => model.ArticleText, "", new { @class = "text-danger" })
         </dd>
         @if (User.IsInRole("Admin"))
-        {
-        <dt>
-
-            @Html.DisplayNameFor(model => model.ArticleAccepted)
+    {
+        <dt class="b">
+            Geaccepteerd
         </dt>
         <dd>
             @using (Html.BeginForm())
-            {
+        {
             @Html.AntiForgeryToken()
 
             @Html.HiddenFor(model => model.ArticleDescription)
@@ -69,12 +61,12 @@
             @Html.HiddenFor(model => model.ArticleVideo)
             @Html.CheckBoxFor(model => model.ArticleAccepted, new { @class = "form-control checkbutton" });
         <input type="submit" value="Bevestigen" class="btn btn-default" />
-            }
+}
         </dd>
-        }
+}
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Aanpassen", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Terug naar het overzicht", "Index")
 </p>
