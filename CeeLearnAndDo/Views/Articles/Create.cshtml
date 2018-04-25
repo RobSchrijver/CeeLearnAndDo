@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Create";
 }
-<h2>Create</h2>
+<h2>Aanmaken</h2>
 
 
 @using (Html.BeginForm()) 
@@ -15,7 +15,8 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.ArticleDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <p class="control-label col-md-2 b">Omschrijving</p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ArticleDescription, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ArticleDescription, "", new { @class = "text-danger" })
@@ -23,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ArticleName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="control-label col-md-2 b">Naam</p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ArticleName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ArticleName, "", new { @class = "text-danger" })
@@ -31,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ArticlePhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="control-label col-md-2 b">Foto</p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ArticlePhoto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ArticlePhoto, "", new { @class = "text-danger" })
@@ -39,31 +40,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ArticleVideo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="control-label col-md-2 b">Tekst</p>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ArticleVideo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ArticleVideo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ArticleText, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.ArticleText, new { @class = "editor form-control"})
+                @Html.TextAreaFor(model => model.ArticleText, new { @class = "editor form-control" })
                 @Html.ValidationMessageFor(model => model.ArticleText, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Aanmaken" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Terug naar het overzicht", "Index")
 </div>
 
 @section Scripts {

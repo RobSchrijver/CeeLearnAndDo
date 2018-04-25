@@ -27,10 +27,11 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Artikelen", "Index", "Articles")</li>
                     <li>@Html.ActionLink("Referentie", "Index", "Reference")</li>
+                    <li>@Html.ActionLink("FAQ", "Index", "Questions")</li>
                     @if (User.IsInRole("Admin") || User.IsInRole("Consultant"))
-                    {
-                    <li>@Html.ActionLink("Beantwoorden", "Index", "ContactAdmins")</li>
-                    }
+    {
+                <li>@Html.ActionLink("Beantwoorden", "Index", "ContactAdmins")</li>
+}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -49,7 +50,7 @@
     @RenderSection("scripts", required: false)
     <script>
         $('.editor').summernote({
-            height: 300
+            height: 500
         });
         $('.View').summernote({
 

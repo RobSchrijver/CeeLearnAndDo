@@ -9,20 +9,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            <p class="b">E-mail</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            <p class="b">Naam</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            <p class="b">Titel</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            <p class="b">Omschrijving</p>
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Type)
-            
+            <p class="b">Type</p>
         </th>
         <th></th>
     </tr>
@@ -45,8 +44,8 @@
             @Html.DisplayFor(modelItem => item.Type)
         </td>
         <td>
-            @Html.ActionLink("Answer", "Answer", new { id = item.Id }) |
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Beantwoorden", "Answer", new { id = item.Id }) |
+            @Html.ActionLink("Aanpassen", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>

@@ -11,40 +11,32 @@
     <h4>Article</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleDescription)
+        <dt class="b">
+            Omschrijving
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ArticleDescription)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleName)
+        <dt class="b">
+            Naam
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ArticleName)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticlePhoto)
+        <dt class="b">
+            Foto
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ArticlePhoto)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleVideo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ArticleVideo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ArticleText)
+        <dt class="b">
+            Tekst
         </dt>
 
         <dd>
@@ -58,7 +50,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            @Html.ActionLink("Terug naar het overzicht", "Index")
         </div>
     }
 </div>
