@@ -15,6 +15,7 @@ namespace CeeLearnAndDo.Models
         public string ArticleName { get; set; }
         public string ArticlePhoto { get; set; }
         public string ArticleVideo { get; set; }
+        public DateTime ArticleDate { get; set; }
 
         [AllowHtml]
         public string ArticleText { get; set; }
