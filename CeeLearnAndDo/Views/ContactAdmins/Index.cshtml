@@ -42,7 +42,15 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
+            @if (item.Type == 0)
+            {
+                <p>Vraag</p>
+            }
+            @if (item.Type == 1)
+            {
+                <p>Contact</p>
+            }
+            @*@Html.DisplayFor(modelItem => item.Type)*@
         </td>
         <td>
             @Html.ActionLink("Answer", "Answer", new { id = item.Id }) |
