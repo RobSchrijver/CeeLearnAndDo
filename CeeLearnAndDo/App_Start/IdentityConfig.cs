@@ -86,6 +86,11 @@ namespace CeeLearnAndDo
             }
             return manager;
         }
+
+        internal Task CreateIdentityAsync(IUser user, string applicationCookie)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     // Configure the application sign-in manager which is used in this application.

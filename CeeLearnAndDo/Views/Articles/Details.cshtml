@@ -47,7 +47,9 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ArticleText, new { @class = "text" })
+            @*@Html.DisplayFor(model => model.ArticleText, new { @class = "editor form-control" })*@
+            @Html.TextAreaFor(model => model.ArticleText, new { @class = "View form-control" })
+            @Html.ValidationMessageFor(model => model.ArticleText, "", new { @class = "text-danger" })
         </dd>
         @if (User.IsInRole("Admin"))
         {
